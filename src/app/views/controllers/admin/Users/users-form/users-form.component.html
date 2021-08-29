@@ -10,9 +10,23 @@
         <input
           type="text"
           matInput
-          formControlName="name"
+          formControlName="firstName"
           [ngClass]="{ 'is-invalid': submitted && f?.title.errors }"
           placeholder="Name"
+          required
+        />
+        <div *ngIf="submitted && f?.name.errors" class="invalid-feedback">
+          <div *ngIf="f?.name.errors.required">Name is required</div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f?.title.errors }"
+          placeholder="username"
           required
         />
         <div *ngIf="submitted && f?.name.errors" class="invalid-feedback">
@@ -24,14 +38,12 @@
         <input
           type="text"
           matInput
-          formControlName="ec"
+          formControlName="lastName"
           [ngClass]="{ 'is-invalid': submitted && f?.title.errors }"
-          placeholder="Ec Number"
+          placeholder="lastName"
           required
         />
-        <div *ngIf="submitted && f?.ec.errors" class="invalid-feedback">
-          <div *ngIf="f?.ec.errors.required">Title is required</div>
-        </div>
+      
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <input
@@ -48,13 +60,43 @@
       </mat-form-field>
    
 
+      
+      <mat-form-field class="example-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="initials"
+          [ngClass]="{ 'is-invalid': submitted && f?.title.errors }"
+          placeholder="initials"
+          required
+        />
+        <div *ngIf="submitted && f?.name.errors" class="invalid-feedback">
+          <div *ngIf="f?.name.errors.required">Name is required</div>
+        </div>
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width">
+        <input
+          type="number"
+          matInput
+          formControlName="phoneNumber"
+          [ngClass]="{ 'is-invalid': submitted && f?.title.errors }"
+          placeholder="phoneNumber"
+          required
+        />
+        <div *ngIf="submitted && f?.name.errors" class="invalid-feedback">
+          <div *ngIf="f?.name.errors.required">Name is required</div>
+        </div>
+      </mat-form-field>
+
+
 
       <mat-form-field class="example-full-width">
-        <mat-label>Role</mat-label>
-        <mat-select formControlName="role" >
+        <mat-label>User Group </mat-label>
+        <mat-select formControlName="groupId" >
           <mat-optgroup >
-            <mat-option *ngFor="let role of roles" [value]="role._id">
-              {{role.name}}
+            <mat-option *ngFor="let branch of groups" [value]="branch.id">
+              {{branch.name}}
             </mat-option>
           </mat-optgroup>
         </mat-select>
@@ -62,11 +104,17 @@
 
 
       <mat-form-field class="example-full-width">
-        <mat-label>Branch </mat-label>
-        <mat-select formControlName="branchId" >
+        <mat-label>Portal </mat-label>
+        <mat-select formControlName="portalClient" >
           <mat-optgroup >
-            <mat-option *ngFor="let branch of branches" [value]="branch._id">
-              {{branch.name}}
+            <mat-option value="ADMIN_PORTAL_USER">
+              ADMIN_PORTAL_USER
+            </mat-option>
+            <mat-option value="CUSTOMER_PORTAL_USER">
+              CUSTOMER_PORTAL_USER
+            </mat-option>
+            <mat-option value="FINANCIAL_INSTITUTION_PORTAL_USER">
+              FINANCIAL_INSTITUTION_PORTAL_USER
             </mat-option>
           </mat-optgroup>
         </mat-select>
