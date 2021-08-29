@@ -81,5 +81,16 @@ export class UserService {
   revokePermission(){
     return this.apis.patch(`v1/user-permissions/revoke`)
   }
+  getUnassginedPermissions(userId){
 
+    return this.apis.get(`v1/permissions/client-accessible`)
+
+  }
+
+
+  getAssgiendPermissions(userId){
+
+    return this.apis.get(`v1/user/${userId}/permissions/all`)
+
+  }
 }

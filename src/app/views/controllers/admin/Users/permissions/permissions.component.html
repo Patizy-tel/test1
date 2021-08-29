@@ -1,0 +1,8 @@
+
+<mat-nav-list>  
+  <mat-list-item *ngFor="let link of pemGroup">  
+     <a matLine href="...">{{ link.name }}</a>  
+     <button class="btn btn-danger btn-sm"  (click)="RevokeSomePem(link.id)"
+    >Revoke</button>
+  </mat-list-item>  
+</mat-nav-list>  

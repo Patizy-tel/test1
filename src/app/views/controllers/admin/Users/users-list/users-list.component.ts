@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { Users } from 'src/app/tools/models';
 import { MoreInfoComponent } from '../more-info/more-info.component';
+import { PermissionsComponent } from '../permissions/permissions.component';
 
 @Component({
   selector: 'app-users-list',
@@ -30,8 +31,10 @@ export class UsersListComponent implements OnInit {
     'isVerified',
     'role',
     'branch',
+    'delete',
     'Edit',
     'changeStatus',
+
     'more',
     'permmissions'
 
@@ -149,9 +152,31 @@ export class UsersListComponent implements OnInit {
 
 
 
+  
+ openPermDialog(id): void {
+  const dialogRef = this.dialog
+       .open(PermissionsComponent, {
+           width: '800px',
+           height: '600px',
+           data: {
+               id: id
+           }
+       });
+
+   dialogRef
+       .afterClosed()
+       .subscribe(result => {
+
+          this.getUsers()
+
+       });  
+}
+
+
+
   del(user_id) {
 
-  /*  Swal.fire({
+    Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
       showCancelButton: true,
@@ -160,15 +185,14 @@ export class UsersListComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
 
-        this.sallonService.deleteServiceCategory(user_id)
-          .subscribe(x => {
+        this.userService.deleteUser(user_id).subscribe(x => {
 
             Swal.fire(
               'Deleted!',
               'Record has been deleted.',
               'success'
             )
-            this.AllSallonCategory();
+            this.getUsers();
 
           },
             err => {
@@ -185,7 +209,7 @@ export class UsersListComponent implements OnInit {
         )
       }
     })
-*/
+
 
   }
 

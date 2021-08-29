@@ -7,6 +7,7 @@ import { UsersListComponent } from './Users/users-list/users-list.component';
 import { UsersFormComponent } from './Users/users-form/users-form.component';
 import { EditUserComponent } from './Users/edit-user/edit-user.component';
 import { MoreInfoComponent } from './Users/more-info/more-info.component';
+import { PermissionsComponent } from './Users/permissions/permissions.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MoreInfoComponent } from './Users/more-info/more-info.component';
     UsersListComponent,
     UsersFormComponent,
     EditUserComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    PermissionsComponent
    
 
 
@@ -30,7 +32,8 @@ import { MoreInfoComponent } from './Users/more-info/more-info.component';
     UsersListComponent,
     UsersFormComponent,
     EditUserComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    PermissionsComponent
  
    
 
