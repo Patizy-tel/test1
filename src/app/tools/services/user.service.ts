@@ -1,5 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs'
+import {Observable, throwError} from 'rxjs'
+import { map, catchError } from 'rxjs/operators';
 import { Groups, Users } from '../models';
 import {ApisService} from './apis.service'
 @Injectable({providedIn: 'root'})
@@ -10,11 +12,24 @@ export class UserService {
     constructor(private apis : ApisService) {}
 
   post(user:any) : Observable < Users > {
-    return this.apis.post(`v1/my-users`, user)
+    return this.apis.post(`v1/users`, user)
   }
 
   getUsers() : Observable < Users > {
-    return this.apis.get(`v1/my-users`)
+    return this.apis.get(`v1/users`)
+  }
+
+
+  findAll(page: number, size: number) {
+    let params = new HttpParams();
+   
+    params = params.append('page', String(page));
+    params = params.append('limit', String(size));
+
+    return this.apis.get('v1/my-users', params).pipe(
+      map((userData:any) => userData),
+      catchError(err => throwError(err))
+    )
   }
 
   getAllUsers() : Observable < Users > {
@@ -36,11 +51,11 @@ export class UserService {
   }
 
   getOneUser(userId:String) : Observable < Users > {
-    return this.apis.get(`v1/my-users/${userId}/by-owneruuid`)
+    return this.apis.get(`v1/user/${userId}`)
   }
 
-  updateUserStatus(userId:String,user:Users) : Observable < Users > {
-    return this.apis.patch(`v1/${userId}/status`,user)
+  updateUserStatus(user:Users, enabled:boolean) : Observable < Users > {
+    return this.apis.patch(`v1/my-users/${user.id}?active=${enabled}`)
   }
 
   changeUserGroup(userId:String,group:Groups) : Observable < Users > {
@@ -51,8 +66,8 @@ export class UserService {
     return this.apis.delete(`v1/my-users/${userId}`)
   }
 
-  putUser(userId:String,user:Users) : Observable < Users >{
-    return this.apis.put(`v1/my-users/${userId}`,user)
+  putUser(user:Users){
+    return this.apis.put(`v1/my-users/${user.id}`,user)
   }
 
   forgotPassword(user:Users) : Observable < Users >{

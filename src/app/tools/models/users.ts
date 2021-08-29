@@ -10,4 +10,6 @@ export interface Users {
   phoneNumber: String;
   portalClient:"ADMIN_PORTAL_USER";
   groupId: Groups;
+  enabled:boolean;
+  id:any
 }

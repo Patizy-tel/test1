@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin.routing';
 import { UsersListComponent } from './Users/users-list/users-list.component';
 import { UsersFormComponent } from './Users/users-form/users-form.component';
-import { AllUsersComponent } from './Users/all-users/all-users.component';
+import { EditUserComponent } from './Users/edit-user/edit-user.component';
+import { MoreInfoComponent } from './Users/more-info/more-info.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AllUsersComponent } from './Users/all-users/all-users.component';
   declarations: [
     UsersListComponent,
     UsersFormComponent,
-    AllUsersComponent,
+    EditUserComponent,
+    MoreInfoComponent
    
 
 
@@ -27,7 +29,9 @@ import { AllUsersComponent } from './Users/all-users/all-users.component';
   exports:[
     UsersListComponent,
     UsersFormComponent,
-    AllUsersComponent,
+    EditUserComponent,
+    MoreInfoComponent
+ 
    
 
  
