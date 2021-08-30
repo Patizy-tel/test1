@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { GroupService } from 'src/app/tools/services';
 import { EditGroupComponent } from '../edit-group/edit-group.component';
 import { GroupFormComponent } from '../group-form/group-form.component';
+import { GroupPermissionsComponent } from '../group-permissions/group-permissions.component';
 
 @Component({
   selector: 'app-group-list',
@@ -15,7 +16,7 @@ import { GroupFormComponent } from '../group-form/group-form.component';
 })
 export class GroupListComponent implements OnInit {
 
-  displayedColumns : string[] = ['index', 'name','description' ,'edit'];
+  displayedColumns : string[] = ['index', 'name','description' ,'edit' ];
   dataSource = new MatTableDataSource()
   @ViewChild(MatSort, {static: true})sort :any= MatSort;
   @ViewChild(MatPaginator, {static: true})paginator :any= MatPaginator;
@@ -100,17 +101,17 @@ console.log(x)
 
   assignPermission(x:String){
 
-  /*  const dialogRef = this.dialog.open( AssignPermissionComponent , {
+    const dialogRef = this.dialog.open(GroupPermissionsComponent , {
       width: '800px',
       height:'400px',
-      data: {x}
+      data: {id:x}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
 
       this.loadGroups();
-    });*/
+    });
   }
 
   assignBulkPermissions(x:String){

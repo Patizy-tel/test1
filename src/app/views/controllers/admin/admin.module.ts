@@ -11,6 +11,7 @@ import { PermissionsComponent } from './Users/permissions/permissions.component'
 import { GroupListComponent } from './Groups/group-list/group-list.component';
 import { GroupFormComponent } from './Groups/group-form/group-form.component';
 import { EditGroupComponent } from './Groups/edit-group/edit-group.component';
+import { GroupPermissionsComponent } from './Groups/group-permissions/group-permissions.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditGroupComponent } from './Groups/edit-group/edit-group.component';
     PermissionsComponent,
     GroupListComponent,
     GroupFormComponent,
-    EditGroupComponent
+    EditGroupComponent,
+    GroupPermissionsComponent
    
 
 
@@ -42,7 +44,8 @@ import { EditGroupComponent } from './Groups/edit-group/edit-group.component';
     PermissionsComponent,
     GroupListComponent,
     GroupFormComponent,
-    EditGroupComponent
+    EditGroupComponent,
+    GroupPermissionsComponent
  
    
 

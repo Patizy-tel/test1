@@ -44,4 +44,13 @@ deleteGroup(groupId:String) : Observable < Groups > {
       .apis
       .delete(`v1/group/${groupId}`)
 }
+
+
+
+
+
+
+ getUmAssginedGroupPermissions(groupId){
+    return this.apis.get(`v1/group-permissions/unassigned/${groupId}/fi`)
+ }
 }

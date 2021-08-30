@@ -83,7 +83,7 @@ export class UserService {
   }
   getUnassginedPermissions(userId){
 
-    return this.apis.get(`v1/permissions/client-accessible`)
+    return this.apis.get(`v1/user-permissions/unassigned/${userId}`)
 
   }
 
@@ -93,4 +93,19 @@ export class UserService {
     return this.apis.get(`v1/user/${userId}/permissions/all`)
 
   }
+
+
+
+  assignPem(userID ,pemid){
+
+     return this.apis.post(`v1/user-permissions?permissionId=${pemid}&userId=${userID}`,{})
+  }
+
+
+
+   revokeIt(permId){
+
+
+   return this.apis.post(`v1/user-permissions/revoke?userPermissionId=${permId}`,{})
+   }
 }

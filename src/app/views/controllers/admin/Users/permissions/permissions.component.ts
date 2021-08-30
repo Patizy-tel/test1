@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UserService } from 'src/app/tools/services';
+import { AlertService, UserService } from 'src/app/tools/services';
 
 @Component({
   selector: 'app-permissions',
@@ -9,28 +9,63 @@ import { UserService } from 'src/app/tools/services';
 })
 export class PermissionsComponent implements OnInit {
   pemGroup:any =[]
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any , public dialog : MatDialog, private userService:UserService) { }
+  needRevoke:any =[]
+  ready:boolean = false
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any , public dialog : MatDialog, private userService:UserService ,private  alertService:AlertService) { }
 
   ngOnInit() {
 
-    this.userService.getAssgiendPermissions(this.data.id).subscribe(resp=>{
+    this.gethemAll();
 
-       console.log(resp)
-    });
-
-     this.userService.getUnassginedPermissions(this.data.id).subscribe(resps=>{
-
-      console.log(resps)
-     })
+ 
   }
 
 
+
+  gethemAll(){
+
+    this.userService.getAssgiendPermissions(this.data.id).subscribe((resp:any)=>{
+
+      console.log(resp)
+
+      this.needRevoke = resp.sort()
+   });
+
+    this.userService.getUnassginedPermissions(this.data.id).subscribe((resps:any)=>{
+
+     this.pemGroup = resps.sort()
+
+     console.log(resps)
+
+     this.ready = true;
+    })
+
+
+
+  }
+
   RevokeSomePem(x){
-    console.log(x)
+    this.userService.revokeIt(x).subscribe(resp=>{
+
+      this.gethemAll();
+    },err=>{
+console.log(err.error)
+
+       this.alertService.error(err.error.error ||err.error.message )
+      
+    })
+ 
   }
 
   assignPem(x){
-    console.log(x)
+  this.userService.assignPem(this.data.id ,x).subscribe(resp=>{
+    this.gethemAll();
+  },err=>{
+    console.log(err.error)
+    
+           this.alertService.error(err.error.error ||err.error.message)
+          
+        })
   }
 
 }
