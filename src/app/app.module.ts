@@ -18,6 +18,8 @@ import { NavigationComponent } from './views/middleware/header-navigation/naviga
 import { SidebarComponent } from './views/middleware/sidebar/sidebar.component';
 import { SpinnerComponent } from './views/middleware/spinner.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 1,
@@ -49,6 +51,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         allowedUrls:[`${environment.apiUrl}`],
         sendAccessToken:true
       }
+    }),
+    StoreModule.forRoot(reducers, {
+      metaReducers
     })
   ],
   providers: [
