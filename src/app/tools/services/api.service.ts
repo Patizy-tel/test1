@@ -127,16 +127,16 @@ import {
           break;
 
         case 'form-data':
-//          headersConfig['Content-Type'] = `application/x-www-form-urlencoded`;
+         headersConfig['Content-Type'] = `application/x-www-form-urlencoded`;
           break;
 
         case 'multipart-form-data':
-  //        headersConfig['Content-Type'] = `multipart/form-data`;
+          headersConfig['Content-Type'] = `multipart/form-data`;
           break;
 
         default:
 
-    //      headersConfig['Content-Type'] = `application/json`;
+          headersConfig['Content-Type'] = `application/json`;
           break;
       }
 

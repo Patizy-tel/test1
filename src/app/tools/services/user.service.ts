@@ -50,7 +50,7 @@ export class UserService {
     return this.apis.post(`v1/resend-activation-email`,user)
   }
 
-  getOneUser(userId:String) : Observable < Users > {
+  getOneUser(userId:string) : Observable < Users > {
     return this.apis.get(`v1/user/${userId}`)
   }
 
@@ -58,11 +58,11 @@ export class UserService {
     return this.apis.patch(`v1/my-users/${user.id}?active=${enabled}`)
   }
 
-  changeUserGroup(userId:String,group:Groups) : Observable < Users > {
+  changeUserGroup(userId:string,group:Groups) : Observable < Users > {
     return this.apis.patch(`v1/${userId}/change-user-group`,group)
   }
 
-  deleteUser(userId:String) : Observable < Users >{
+  deleteUser(userId:string) : Observable < Users >{
     return this.apis.delete(`v1/my-users/${userId}`)
   }
 
@@ -74,7 +74,7 @@ export class UserService {
     return this.apis.post(`v1/forgot-password`,user)
   }
 
-  getUserPermission(userId:String) : Observable < Users >{
+  getUserPermission(userId:string) : Observable < Users >{
     return this.apis.get(`v1/user/${userId}/permissions`)
   }
 

@@ -10,8 +10,8 @@ export const ROUTES: RouteInfo[] = [
     submenu: [],
   },
   {
-    path: "/admin/branches",
-    title: "Branches",
+    path: "/admin/groups",
+    title: "Groups",
     icon: "mdi mdi-source-fork",
     class: "",
     extralink: false,
